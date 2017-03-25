@@ -1,0 +1,24 @@
+language: cpp
+compiler: gcc
+dist: trusty
+
+before_install:
+  # C++17
+  - sudo add-apt-repository --yes ppa:ubuntu-toolchain-r/test
+  - sudo apt-get update -qq
+
+install: 
+  # C++17
+  - sudo apt-get install -qq g++-6
+  - sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-6 90
+
+script: 
+  # Build
+  - qmake
+  - make release
+  # Run
+  - ./travis_qmake_gcc_cpp17_gprof
+  # produce the gprof log
+  - gprof travis_qmake_gcc_cpp17_gprof > gprof.log
+  # Read the 100 top lines
+  - head gprof.log -n 100
