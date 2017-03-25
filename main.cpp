@@ -4,11 +4,6 @@
 #include <numeric>
 #include <vector>
 
-//Only compiles
-auto cpp_14() noexcept {
-  return "Hello world\n";
-}
-
 std::vector<int> sort_a(std::vector<int> v)
 {
  const auto sz = v.size();
@@ -51,5 +46,4 @@ int main()
   const auto a = sort_a(v);
   const auto b = sort_b(v);
   if (a != b) return 1;
-  cpp_14();
 }
