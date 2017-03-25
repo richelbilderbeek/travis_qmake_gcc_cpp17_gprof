@@ -1,3 +1,4 @@
+#include <algorithm>
 #include <cassert>
 #include <iostream>
 #include <numeric>
@@ -8,24 +9,35 @@ auto cpp_14() noexcept {
   return "Hello world\n";
 }
 
-int sum_a(const std::vector<int>& v)
+std::vector<int> sort_a(std::vector<int> v)
 {
-  int sum = 0;
-  const auto sz = v.size();
-  for (auto i = 0u; i!=sz; ++i)
+ const auto sz = v.size();
+  for(auto i = 0u; i != sz - 1; ++i)
   {
-    sum += v[i];
+    for(auto j = 0u; j != sz - i - 1; ++j)
+    {
+      if(v[j] > v[j+1])
+      {
+        std::swap(v[j],v[j+1]);
+      }
+    }
   }
-  return sum;
+  return v;
 }
 
-int sum_b(const std::vector<int>& v)
+std::vector<int> sort_b(std::vector<int> v)
 {
-  return std::accumulate(
-    std::begin(v),
-    std::end(v),
-    0
-  );
+  std::sort(std::begin(v), std::end(v));
+  return v;
+}
+
+auto create_series()
+{
+  const int sz{100'000};
+  std::vector<int> v(sz);
+  std::iota(std::begin(v), std::end(v), 0);
+  std::reverse(std::begin(v), std::end(v));
+  return v;
 }
 
 int main()
@@ -35,14 +47,9 @@ int main()
   #endif
   assert(!"Do not profile in debug mode");
   static_assert("C++17");
-  const int sz{100'000'000};
-  std::vector<int> v(sz);
-  std::iota(std::begin(v), std::end(v), 0);
-  for (int i=0; i!=10; ++i)
-  {
-    const int a{sum_a(v)};
-    const int b{sum_b(v)};
-    if (a != b) return 1;
-  }
+  const auto v = create_series();
+  const auto a = sort_a(v);
+  const auto b = sort_b(v);
+  if (a != b) return 1;
   cpp_14();
 }
