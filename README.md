@@ -1,8 +1,8 @@
 # travis_qmake_gcc_cpp17_gprof
 
-Branch|[![Travis CI logo](TravisCI.png)](https://travis-ci.org)
----|---
-master|[![Build Status](https://travis-ci.org/richelbilderbeek/travis_qmake_gcc_cpp17_gprof.svg?branch=master)](https://travis-ci.org/richelbilderbeek/travis_qmake_gcc_cpp17_gprof)
+Branch |[![Travis CI logo](TravisCI.png)](https://travis-ci.org)
+-------|------------------------------------------------------------------------
+master |[![Build Status](https://travis-ci.org/richelbilderbeek/travis_qmake_gcc_cpp17_gprof.svg?branch=master)](https://travis-ci.org/richelbilderbeek/travis_qmake_gcc_cpp17_gprof)
 develop|[![Build Status](https://travis-ci.org/richelbilderbeek/travis_qmake_gcc_cpp17_gprof.svg?branch=develop)](https://travis-ci.org/richelbilderbeek/travis_qmake_gcc_cpp17_gprof)
 
 This GitHub is part of [the Travis C++ Tutorial](https://github.com/richelbilderbeek/travis_cpp_tutorial).
@@ -18,6 +18,8 @@ The goal of this project is to have a clean Travis CI build, with specs:
 
 More complex builds:
  * [none]
+
+ * Use GitHub Actions (instead of Travis CI): [gha_qmake_gcc_cpp17_gprof](https://github.com/richelbilderbeek/gha_qmake_gcc_cpp17_gprof)
 
 Less complex builds:
  * No `gprof`: [travis_qmake_gcc_cpp17](https://www.github.com/richelbilderbeek/travis_qmake_gcc_cpp17)
